@@ -1,0 +1,70 @@
+/* Imports - START */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;600;700&display=swap");
+/* Imports - END */
+
+/* Global styles - START */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+*:focus,
+*:focus-visible {
+  outline: 1px solid var(--secondary-color);
+}
+
+input,
+button,
+p {
+  font-size: var(--text-md);
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+button {
+  cursor: pointer;
+}
+/* Global styles - END */
+
+/* Text input - START */
+.input {
+  background-color: var(--text-input-background-color);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--placeholder-color);
+  opacity: 1; /* Firefox */
+}
+
+.input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--placeholder-color);
+}
+
+.input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--placeholder-color);
+}
+/* Text input - END */
+
+/* Primary button - START */
+.primary-button {
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 100px;
+  padding: 1rem;
+  color: var(--white-color);
+}
+
+.primary-button:hover {
+  transform: scale(1.01);
+}
+/* Primary button - END */

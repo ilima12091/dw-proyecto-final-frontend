@@ -1,0 +1,16 @@
+:root {
+  /* Colors - START */
+  --bg-color: #cbdee0;
+  --primary-color: #5d84b0;
+  --secondary-color: #5db075;
+  --white-color: #fff;
+  --placeholder-color: #bdbdbd;
+  --text-input-background-color: #f6f6f6;
+  /* Colors - END */
+
+  /* Sizes - START */
+  --text-sm: 12px;
+  --text-md: 16px;
+  --text-lg: 20px;
+  /* Sizes - END */
+}
