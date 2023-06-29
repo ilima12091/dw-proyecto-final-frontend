@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PostCardComponent } from 'src/app/components/post-card/post-card.component';
+import { PostCard } from "src/app/interfaces/post-card"
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  postCards: PostCard[] = [];
+
+  constructor(private homeService: HomeService) {
+    this.postCards = this.homeService.getPostCards();
+  }
 }

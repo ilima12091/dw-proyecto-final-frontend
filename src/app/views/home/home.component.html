@@ -1,1 +1,7 @@
-<p>home works!</p>
+<section class="Home">
+    <h1 class="title">Home</h1>
+    <app-post-card class="post-card-list"
+    *ngFor="let postCard of postCards" [postCard]="postCard" 
+    />
+    <!-- <app-nav-bar class="navBar"></app-nav-bar> -->
+</section>
