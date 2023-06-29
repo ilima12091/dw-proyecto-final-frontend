@@ -11,6 +11,7 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { PostCardComponent } from './components/post-card/post-card.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NavBarItemsComponent } from './components/nav-bar/nav-bar-items/nav-bar-items.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { NavBarItemsComponent } from './components/nav-bar/nav-bar-items/nav-bar
     NavBarComponent,
     NavBarItemsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })
