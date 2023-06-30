@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PostCardComponent } from 'src/app/components/post-card/post-card.component';
 import { PostCard } from "src/app/interfaces/post-card"
-import { HomeService } from 'src/app/services/home.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,9 @@ export class HomeComponent {
 
   postCards: PostCard[] = [];
 
-  constructor(private homeService: HomeService) {
-    this.postCards = this.homeService.getPostCards();
+  constructor(private postService: PostService) {
+    this.postService.getPostCards().then((data) => {
+      this.postCards = data;
+    })
   }
 }
