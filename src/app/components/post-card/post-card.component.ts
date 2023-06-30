@@ -7,5 +7,9 @@ import { PostCard } from 'src/app/interfaces/post-card';
   styleUrls: ['./post-card.component.css']
 })
 export class PostCardComponent {
-  @Input() postCard!: PostCard;
+  @Input() postCard?: PostCard;
+
+  constructor() { }
+
+  ngOnInit() {}
 }
