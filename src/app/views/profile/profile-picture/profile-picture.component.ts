@@ -22,16 +22,17 @@ export class ProfilePictureComponent implements OnInit {
       this.images = file;
     }
   }
-  onSubmit(){
+
+  async onSubmit() {
     const formData = new FormData();
     formData.append('file', this.images);
 
-    this.http.post<any>('http://localhost:8000/', formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
+    try {
+      const res = await this.http.post<any>('http://localhost:8000/user/upload', formData).toPromise();
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
   }
-
-  
 
 }
