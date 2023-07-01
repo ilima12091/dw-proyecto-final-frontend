@@ -2,13 +2,13 @@
   <img class="register-logo" src="/assets/images/app-logo.svg" alt="App logo" />
   <div class="register-content">
     <h1 class="register-title">Create user</h1>
-    <form class="register-form">
-      <input class="input" type="text" placeholder="Name" />
-      <input class="input" type="text" placeholder="Surname" />
-      <input class="input" type="text" placeholder="Email" />
-      <input class="input" type="text" placeholder="Password" />
-      <input class="input" type="text" placeholder="Username" />
-      <button class="primary-button">Sign up</button>
+    <form class="register-form" action="app-register">
+      <input class="input" type="text" placeholder="Name" name="Name" [(ngModel)]="name"/>
+      <input class="input" type="text" placeholder="Surname" name="Surname" [(ngModel)]="surname"/>
+      <input class="input" type="text" placeholder="Email" name="Email" [(ngModel)]="email"/>
+      <input class="input" type="text" placeholder="Password" name="Password" [(ngModel)]="password" />
+      <input class="input" type="text" placeholder="Username" name="Username"[(ngModel)]="username" />
+      <button class="primary-button" (click)="signUp()">Sign up</button>
     </form>
   </div>
 </section>
