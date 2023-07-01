@@ -12,6 +12,7 @@ import { PostCardComponent } from './components/post-card/post-card.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NavBarItemsComponent } from './components/nav-bar/nav-bar-items/nav-bar-items.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PostComponent } from './views/post/post.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PostCardComponent,
     NavBarComponent,
     NavBarItemsComponent,
+    PostComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],

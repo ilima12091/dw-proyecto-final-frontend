@@ -12,4 +12,8 @@ export class PostService {
   async getPostCards(): Promise<PostCard[]> {
     return (await (await fetch(`${this.backendUrl}/home`)).json()) ?? [];
   }
+
+  async getSpecificPost(id: number): Promise<PostCard> {
+    return (await (await fetch(`${this.backendUrl}/home/${id}`)).json()) ?? [];
+  }
 }

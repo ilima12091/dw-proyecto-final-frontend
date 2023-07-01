@@ -1,7 +1,9 @@
 <section class="Home">
     <h1 class="title">Home</h1>
-    <app-post-card class="post-card-list"
-    *ngFor="let postCard of postCards" [postCard]="postCard" 
+    <div class="posts-feed">
+        <app-post-card class="post-card"
+    *ngFor="let postCard of postCards" [postCard]="postCard" [routerLink]="['/home',postCard?.id]"
     />
+    </div>
     <app-nav-bar class="navBar"></app-nav-bar>
 </section>
