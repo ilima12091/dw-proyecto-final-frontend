@@ -1,0 +1,39 @@
+.user-profile {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-profile h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .user-profile ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .user-profile li {
+    margin-bottom: 10px;
+  }
+  
+  .user-profile label {
+    font-weight: bold;
+  }
+  
+  .user-profile input[type="file"] {
+    display: none;
+  }
+  
+  .user-profile img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 10px;
+    border-radius: 50%;
+  }
+  

@@ -17,6 +17,20 @@ export class UserService {
   async getUsers(): Promise<User[]> {
     return (await (await fetch(`${this.url}/users`)).json()) ?? [];
   }
+
+  async getUserByUserName(username: string): Promise<User> {
+    const result = await fetch(`${this.url}/user/${username}`, {
+      method: 'GET',
+      headers: this.commonHeaders,
+    });
+  
+    if (result.ok) {
+      const user = await result.json();
+      return user;
+    } else {
+      throw new Error('Failed to retrieve user');
+    }
+  }
   
   async createUser(user: User): Promise<boolean> {
     const result= await fetch(`${this.url}/user/register`,{
@@ -35,4 +49,13 @@ export class UserService {
     });
     return result.ok;
   }
+
+  async uploadProfileImage(formData: FormData): Promise<any> {
+    return fetch(`${this.url}/user/upload`, {
+      method: 'POST',
+      body: formData,
+    }).then(response => response.json());
+  
+  }
+  
 }

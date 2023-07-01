@@ -1,1 +1,24 @@
-<p>profile works!</p>
+<div class="user-profile">
+    <h1>User Profile</h1>
+    <ul>
+      <li>
+        <label for="name">Name: {{user?.name}}</label>
+      </li>
+      <li>
+        <label for="surname">Surname: {{user?.surname}}</label>
+      </li>
+      <li>
+        <label for="email">Email: {{user?.email}}</label>
+      </li>
+      <li>
+        <label for="username">Username: {{user?.username}}</label>
+        <span id="username"></span>
+      </li>
+      <li>
+        <label for="profileImage">Profile Image</label>
+        
+      </li>
+      <app-profile-picture></app-profile-picture>
+    </ul>
+  </div>
+  

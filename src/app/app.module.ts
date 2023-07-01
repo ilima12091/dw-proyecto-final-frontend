@@ -10,6 +10,7 @@ import { HomeComponent } from './views/home/home.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfilePictureComponent } from './views/profile/profile-picture/profile-picture.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     SearchComponent,
     ProfileComponent,
+    ProfilePictureComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,CommonModule,FormsModule,HttpClientModule],
   providers: [],
