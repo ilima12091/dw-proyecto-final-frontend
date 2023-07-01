@@ -36,3 +36,8 @@
 .login-form button {
   margin-top: 1rem;
 }
+
+.login-form p{
+  font-weight: 700;
+}
+

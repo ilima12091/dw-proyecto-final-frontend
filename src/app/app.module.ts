@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
@@ -8,7 +9,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { HomeComponent } from './views/home/home.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileComponent } from './views/profile/profile.component';
-import { PostCardComponent } from './components/post-card/post-card.component';
+import { HttpClientModule } from '@angular/common/http';import { PostCardComponent } from './components/post-card/post-card.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { NavBarItemsComponent } from './components/nav-bar/nav-bar-items/nav-bar-items.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -27,7 +28,7 @@ import { PostComponent } from './views/post/post.component';
     NavBarItemsComponent,
     PostComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
+  imports: [BrowserModule, AppRoutingModule,CommonModule,FormsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
