@@ -2,13 +2,18 @@
   <img class="register-logo" src="/assets/images/app-logo.svg" alt="App logo" />
   <div class="register-content">
     <h1 class="register-title">Create user</h1>
-    <form class="register-form" action="app-register">
-      <input class="input" type="text" placeholder="Name" name="Name" [(ngModel)]="name"/>
-      <input class="input" type="text" placeholder="Surname" name="Surname" [(ngModel)]="surname"/>
-      <input class="input" type="text" placeholder="Email" name="Email" [(ngModel)]="email"/>
-      <input class="input" type="text" placeholder="Password" name="Password" [(ngModel)]="password" />
-      <input class="input" type="text" placeholder="Username" name="Username"[(ngModel)]="username" />
-      <button class="primary-button" (click)="signUp()">Sign up</button>
+    <form class="register-form" (ngSubmit)="signUp()">
+      <input class="input" type="text" placeholder="Name" name="Name" [(ngModel)]="name" required/>
+      <input class="input" type="text" placeholder="Surname" name="Surname" [(ngModel)]="surname" required/>
+      <input class="input" type="text" placeholder="Email" name="Email" [(ngModel)]="email" required/>
+      <input class="input" type="text" placeholder="Password" name="Password" [(ngModel)]="password" required/>
+      <input class="input" type="text" placeholder="Username" name="Username"[(ngModel)]="username" required/>
+      <div *ngIf="formSubmitted && isFieldMissing('name')" class="error-message">Name is required</div>
+      <div *ngIf="formSubmitted && isFieldMissing('surname')" class="error-message">Surname is required</div>
+      <div *ngIf="formSubmitted && isFieldMissing('email')" class="error-message">Email is required</div>
+      <div *ngIf="formSubmitted && isFieldMissing('password')" class="error-message">Password is required</div>
+      <div *ngIf="formSubmitted && isFieldMissing('Username')" class="error-message">Username is required</div>
+      <button class="primary-button" type="submit">Sign up</button>
     </form>
   </div>
 </section>

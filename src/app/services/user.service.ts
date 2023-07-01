@@ -19,7 +19,7 @@ export class UserService {
   }
   
   async createUser(user: User): Promise<boolean> {
-    const result= await fetch(`${this.url}/register`,{
+    const result= await fetch(`${this.url}/user/register`,{
       method: 'POST',
       headers:this.commonHeaders,
       body:JSON.stringify(user),
