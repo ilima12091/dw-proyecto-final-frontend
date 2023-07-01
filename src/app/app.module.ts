@@ -14,6 +14,7 @@ import { PostCardComponent } from './components/post-card/post-card.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { PostComponent } from './views/post/post.component';
 import { NavBarItemComponent } from './components/nav-bar-item/nav-bar-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NavBarItemComponent } from './components/nav-bar-item/nav-bar-item.comp
     CommonModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
