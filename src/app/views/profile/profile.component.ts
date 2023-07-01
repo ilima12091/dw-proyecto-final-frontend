@@ -25,16 +25,28 @@ export class ProfileComponent implements OnInit{
     if (files && files.length > 0) {
       const file: File = files[0];
       const formData: FormData = new FormData();
-      formData.append('profileImage', file);
+      formData.append('file', file);
   
-      this.userService.uploadProfileImage(formData).then(response => {
+      const username = this.user.username || '';
+  
+      this.userService.uploadProfileImage(formData, username).then(response => {
         console.log('Profile image uploaded successfully', response);
-        this.user.profileImage = response.filename;
+        // Update the user object with the new profileImage value
+        this.user.profileImage = response.profileImage;
+  
+        // Fetch the updated user object from the backend
+        this.userService.getUserByUserName(username).then((user: User) => {
+          this.user = user;
+        }).catch(error => {
+          console.error('Error retrieving user profile', error);
+        });
       }).catch(error => {
         console.error('Error uploading profile image', error);
       });
     }
   }
+  
+  
   
   
   

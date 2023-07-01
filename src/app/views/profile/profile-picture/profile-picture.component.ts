@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/interfaces/user';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-import { FormBuilder,FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-profile-picture',
   templateUrl: './profile-picture.component.html',
@@ -9,14 +12,36 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProfilePictureComponent implements OnInit {
   title = 'fileUpload';
-  images?:any;
-  constructor(private http: HttpClient){}
+  images?: any;
+  @Input() user!: User;
+  @Input() setUserToEdit!: (user: User) => void;
 
-  ngOnInit(){
+  private apiUrl = 'http://localhost:8000/user/upload/:username'; 
 
+  constructor(
+    private http: HttpClient,
+    private userService: UserService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const username = params['username'];
+      this.getUserProfile(username);
+    });
   }
 
-  selectImage(event:any) {
+  getUserProfile(username: string): void {
+    this.userService.getUserByUserName(username)
+      .then((user: User) => {
+        this.user = user;
+      })
+      .catch(error => {
+        console.error('Error retrieving user profile', error);
+      });
+  }
+
+  selectImage(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.images = file;
@@ -26,13 +51,17 @@ export class ProfilePictureComponent implements OnInit {
   async onSubmit() {
     const formData = new FormData();
     formData.append('file', this.images);
-
+  
     try {
-      const res = await this.http.post<any>('http://localhost:8000/user/upload', formData).toPromise();
-      console.log(res);
+      const res = await this.http.post<any>(`http://localhost:8000/user/upload/${this.user.username}`, formData).toPromise();
+      console.log(res); // The response will contain the updated user object
+  
+      if (res && res.user) {
+        this.user = res.user; // Assign the updated user object to this.user
+      }
     } catch (err) {
       console.log(err);
     }
   }
-
+  
 }

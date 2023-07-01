@@ -16,6 +16,11 @@
       </li>
       <li>
         <label for="profileImage">Profile Image</label>
+
+        <img *ngIf="user?.profileImage" [src]="'/ProyectoFinal/dw-proyecto-final-backend/' + user?.profileImage" alt={{user?.profileImage}}>
+
+
+
         
       </li>
       <app-profile-picture></app-profile-picture>

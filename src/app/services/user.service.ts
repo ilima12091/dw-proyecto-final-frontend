@@ -50,12 +50,12 @@ export class UserService {
     return result.ok;
   }
 
-  async uploadProfileImage(formData: FormData): Promise<any> {
-    return fetch(`${this.url}/user/upload`, {
+  async uploadProfileImage(formData: FormData, username: string): Promise<any> {
+    return fetch(`${this.url}/user/upload/${username}`, {
       method: 'POST',
       body: formData,
     }).then(response => response.json());
-  
   }
+  
   
 }
