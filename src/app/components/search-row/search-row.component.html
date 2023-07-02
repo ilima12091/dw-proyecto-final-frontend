@@ -1,0 +1,12 @@
+<a [routerLink]="['/profile', user.user_id]" class="search-result-container">
+  <img
+    class="search-result-image"
+    [src]="
+      user.profile_picture ??
+      'https://img.freepik.com/free-icon/user_318-563642.jpg'
+    "
+    [alt]="user.username + ' avatar'"
+  />
+
+  <span class="search-result-content">{{ user.username }}</span>
+</a>
