@@ -68,3 +68,11 @@ button {
   transform: scale(1.01);
 }
 /* Primary button - END */
+
+/* View container - START */
+@media (max-width: 900px) {
+  .view-container {
+    padding-bottom: 80px;
+  }
+}
+/* View container - END */

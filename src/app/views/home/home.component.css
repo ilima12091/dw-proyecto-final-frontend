@@ -1,29 +1,19 @@
-.Home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
 
 .post-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-    width: 100%;
-    max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 400px;
 }
 
 .post-card:hover {
-    cursor: pointer;
-}
-
-.posts-feed {
-    margin-bottom: 84px;
-}
-
-.navBar {
-    position: fixed;
-    bottom: 0;
-    border-top: 1px #BDC5CD solid;
+  cursor: pointer;
 }
