@@ -5,6 +5,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { HomeComponent } from './views/home/home.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { PostComponent } from './views/post/post.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'home/:id',
+    component: PostComponent,
   },
   {
     path: 'search',

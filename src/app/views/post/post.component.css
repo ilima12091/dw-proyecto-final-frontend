@@ -1,0 +1,37 @@
+.postCard {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: .5rem;
+    border-bottom: 1px black solid;
+}
+
+.userContainer {
+    margin: .5rem 0rem;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.postCard-UserImage {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.postCard-postText {
+    width: 100%;
+}
+
+.time {
+    font-size: small;
+}
+
+.navBar {
+    position: fixed;
+    bottom: 0;
+    border-top: 1px #BDC5CD solid;
+}
