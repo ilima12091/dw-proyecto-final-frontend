@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../interfaces/user';
+import { SecureService } from '../secure/secure.service';
+import { UserSearch } from 'src/app/interfaces/user-search';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +13,7 @@ export class UserService {
   };
   url = 'http://localhost:8000';
 
-  constructor() {}
+  constructor(private secureService: SecureService) {}
 
   async getUsers(): Promise<User[]> {
     return (await (await fetch(`${this.url}/users`)).json()) ?? [];
@@ -33,5 +35,12 @@ export class UserService {
       body: JSON.stringify(user),
     });
     return result.ok;
+  }
+
+  async searchUsers(searchTerm: string): Promise<UserSearch[]> {
+    return this.secureService.request(
+      'GET',
+      `${this.url}/users/search?username=${searchTerm}`
+    );
   }
 }
