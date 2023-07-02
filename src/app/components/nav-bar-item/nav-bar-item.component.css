@@ -1,0 +1,24 @@
+.nav-bar-item {
+  background-color: #e8e8e8;
+  color: #000;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  text-decoration-line: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-bar-item-active {
+  background: #bed1d3;
+}
+
+@media (max-width: 900px) {
+  .nav-bar-item-text {
+    display: none;
+  }
+
+  .nav-bar-item {
+    padding: 0.5rem;
+  }
+}

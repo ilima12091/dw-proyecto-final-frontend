@@ -9,11 +9,11 @@ import { RegisterComponent } from './views/register/register.component';
 import { HomeComponent } from './views/home/home.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileComponent } from './views/profile/profile.component';
-import { HttpClientModule } from '@angular/common/http';import { PostCardComponent } from './components/post-card/post-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PostCardComponent } from './components/post-card/post-card.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { NavBarItemsComponent } from './components/nav-bar/nav-bar-items/nav-bar-items.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PostComponent } from './views/post/post.component';
+import { NavBarItemComponent } from './components/nav-bar-item/nav-bar-item.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +25,16 @@ import { PostComponent } from './views/post/post.component';
     ProfileComponent,
     PostCardComponent,
     NavBarComponent,
-    NavBarItemsComponent,
     PostComponent,
+    NavBarItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,CommonModule,FormsModule,HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
