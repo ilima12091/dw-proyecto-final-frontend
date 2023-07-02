@@ -1,46 +1,42 @@
 import { Component } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/users/users.service';
 import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  
   name?: string;
   surname?: string;
   email?: string;
   password?: string;
   username?: string;
 
-  constructor(private userService: UserService, private router: Router) { }
-  
+  constructor(private userService: UserService, private router: Router) {}
+
   formSubmitted: boolean = false;
 
   signUp(): void {
-
-    const user : User = {
+    const user: User = {
       name: this.name,
       surname: this.surname,
       email: this.email,
       password: this.password,
-      username: this.username
+      username: this.username,
     };
 
-    this.userService.createUser(user)
-    .then(response => {
-        
-      this.formSubmitted = true;
-        console.log('User created successfully', response);
-        if(response){
+    this.userService
+      .createUser(user)
+      .then((response) => {
+        this.formSubmitted = true;
+        if (response) {
           this.router.navigate(['/login']);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error creating user', error);
-        
       });
   }
 

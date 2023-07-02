@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
@@ -10,6 +9,7 @@ import { AuthenticationService } from 'src/app/services/authentication/authentic
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  showLoginError = false;
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -17,8 +17,7 @@ export class LoginComponent {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router,
-    private cookieService: CookieService
+    private router: Router
   ) {}
 
   performLogin() {
@@ -29,10 +28,14 @@ export class LoginComponent {
         password: password ?? '',
       })
       .then((result) => {
+        this.showLoginError = false;
         if (result) {
           localStorage.setItem('SESSION-EXPIRATION', result?.sessionExpiration);
           this.router.navigate(['/home']);
         }
+      })
+      .catch((error) => {
+        this.showLoginError = true;
       });
   }
 }

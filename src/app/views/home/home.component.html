@@ -1,5 +1,6 @@
 <section class="view-container home">
   <h1>Home</h1>
+<<<<<<< HEAD
   <div class="posts-feed">
     <app-post-card
       class="post-card"
@@ -8,4 +9,14 @@
       [routerLink]="['/home', postCard?.id]"
     />
   </div>
+=======
+  <p *ngIf="errorLoadingPosts">There was an error loading posts</p>
+  <mat-spinner *ngIf="loadingPosts" diameter="50" />
+  <app-post-card
+    class="post-card"
+    *ngFor="let postCard of postCards"
+    [postCard]="postCard"
+    [routerLink]="['/home', postCard?.id]"
+  />
+>>>>>>> f30182ae35ec06c53d05e9054deb5e716d5b32be
 </section>

@@ -1,13 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/users/users.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
+  name?: string;
+  surname?: string;
+  email?: string;
+  password?: string;
+  username?: string;
+  
   user_id: number | undefined;
 
 
@@ -78,5 +84,46 @@ export class ProfileComponent implements OnInit{
       .catch(error => {
         console.error('Error retrieving user profile', error);
       });
+
   }
+
+  saveChanges(){
+
+    // to finish
+
+    const nameInput = document.querySelector('input[name="Name"]') as HTMLInputElement;
+    const surnameInput = document.querySelector('input[name="Surname"]') as HTMLInputElement;
+    const emailInput = document.querySelector('input[name="email"]') as HTMLInputElement;
+    const usernameInput = document.querySelector('input[name="username"]') as HTMLInputElement;
+
+    const user: User = {
+      name: this.name,
+      surname: this.surname,
+      email: this.email,
+      password: this.password,
+      username: this.username,
+    };
+
+    if (nameInput.value) {
+      
+      user.name= nameInput.value;
+    }
+  
+    if (surnameInput.value) {
+      
+      user.surname = surnameInput.value;
+      
+    }
+  
+    if (emailInput.value) {
+      user.email = emailInput.value;
+      
+    }
+  
+    if (usernameInput.value) {
+      user.username = usernameInput.value;
+    }
+  }
+
+
 }

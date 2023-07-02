@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PostService } from 'src/app/services/post.service';
+import { PostsService } from 'src/app/services/posts/posts.service';
 import { PostCard } from 'src/app/interfaces/post-card';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class PostComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private postsService: PostService
+    private postsService: PostsService
   ) {
     let id = this.route.snapshot.paramMap.get('id');
 
