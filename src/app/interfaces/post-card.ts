@@ -1,7 +1,11 @@
-export interface PostCard {
-    id?: number;
+import { Timestamp } from "rxjs";
+import { User } from "./user";
+
+export interface PostCard extends User{
+    postId: number;
+    userId: number;
     userImage: string;
     userName: string;
-    postText: string;
-    time: string;
+    content: string;
+    timeStap: Timestamp<number>;
 }
