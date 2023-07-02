@@ -15,7 +15,10 @@
         type="password"
         placeholder="Password"
       />
-      <button class="primary-button login-button">Log in</button>
+      <p *ngIf="showLoginError" class="login-error">
+        Login error, please try again
+      </p>
+      <button class="primary-button">Log in</button>
       <p class="login-register-title">Don't have an account?</p>
       <button class="secondary-button register-button" routerLink="/register">
         Create account

@@ -33,14 +33,19 @@
   width: 100%;
 }
 
-.login-button {
-  margin-top: 1rem;
-}
-
 .login-form p {
   font-weight: 700;
 }
 
 .login-register-title {
   text-align: center;
+}
+
+.login-error {
+  text-align: center;
+  background-color: red;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 0px;
 }

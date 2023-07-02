@@ -1,11 +1,11 @@
 <section class="view-container home">
   <h1>Home</h1>
-  <div class="posts-feed">
-    <app-post-card
-      class="post-card"
-      *ngFor="let postCard of postCards"
-      [postCard]="postCard"
-      [routerLink]="['/home', postCard?.id]"
-    />
-  </div>
+  <p *ngIf="errorLoadingPosts">There was an error loading posts</p>
+  <mat-spinner *ngIf="loadingPosts" diameter="50" />
+  <app-post-card
+    class="post-card"
+    *ngFor="let postCard of postCards"
+    [postCard]="postCard"
+    [routerLink]="['/home', postCard?.id]"
+  />
 </section>
