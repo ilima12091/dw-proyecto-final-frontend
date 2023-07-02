@@ -1,10 +1,12 @@
 import { Timestamp } from "rxjs";
 import { User } from "./user";
+import { Comment } from "./comments";
 
 export interface PostCard extends User{
     postId: number;
     userId: number;
     userImage: string;
     content: string;
-    timeStap: Timestamp<number>;
+    timeStamp: Timestamp<number>;
+    comments: Comment[];
 }

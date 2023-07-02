@@ -20,7 +20,7 @@ export const navBarItems = [
     text: 'Chat',
   },
   {
-    route: '/profile',
+    route: '/profile/:user_id',
     icon: 'assets/icons/Profile.svg',
     text: 'Profile',
   },

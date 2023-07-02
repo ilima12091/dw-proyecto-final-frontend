@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PostCard } from 'src/app/interfaces/post-card';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PostsService } from 'src/app/services/posts/posts.service';
+import { Comment } from 'src/app/interfaces/comments';
 
 @Component({
   selector: 'app-post',

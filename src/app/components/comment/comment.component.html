@@ -1,0 +1,8 @@
+<div class="comment">
+    <div class="userContainer">
+      <img class="comment-UserImage" [src]="comment?.userImage" alt="notFound" />
+      <h2 class="comment-UserName">{{ comment?.username }}</h2>
+    </div>
+    <p class="comment-postText">{{ comment?.content }}</p>
+    <p class="time">{{ comment?.timeStamp }}</p>
+  </div>

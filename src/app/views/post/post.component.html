@@ -1,8 +1,15 @@
 <div class="postCard">
   <div class="userContainer">
     <img class="postCard-UserImage" [src]="post?.userImage" alt="notFound" />
-    <h2 class="postCard-UserName">{{ post?.userName }}</h2>
+    <h2 class="postCard-UserName">{{ post?.username }}</h2>
   </div>
-  <p class="postCard-postText">{{ post?.postText }}</p>
-  <p class="time">{{ post?.time }}</p>
+  <p class="postCard-postText">{{ post?.content }}</p>
+  <p class="time">{{ post?.timeStamp }}</p>
+</div>
+<div class="coments-seccion">
+  <app-comment
+    class="comment" 
+    *ngFor="let comment of post?.comments"
+    [comment]="comment"
+  />
 </div>

@@ -6,6 +6,6 @@
     class="post-card"
     *ngFor="let postCard of postCards"
     [postCard]="postCard"
-    [routerLink]="['/home', postCard?.id]"
+    [routerLink]="['/home', postCard?.postId]"
   />
 </section>

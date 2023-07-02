@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchRowComponent } from './components/search-row/search-row.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SearchRowComponent } from './components/search-row/search-row.component
     PostComponent,
     NavBarItemComponent,
     SearchRowComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
