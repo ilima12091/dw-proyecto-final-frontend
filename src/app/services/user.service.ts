@@ -32,7 +32,7 @@ export class UserService {
     }
   }
 
-  async getUserByUserId(user_id: string): Promise<User> {
+  async getUserByUserId(user_id: number): Promise<User> {
     const result = await fetch(`${this.url}/user/${user_id}`, {
       method: 'GET',
       headers: this.commonHeaders,
@@ -64,8 +64,11 @@ export class UserService {
     return result.ok;
   }
 
-  async uploadProfileImage(formData: FormData, username: string): Promise<any> {
-    return fetch(`${this.url}/user/upload/${username}`, {
+  async uploadProfileImage(fileData: string, user_id: number|undefined): Promise<any> {
+    const formData = new FormData();
+    formData.append('file', fileData); // Add the file data to the FormData
+
+    return fetch(`${this.url}/user/upload/${user_id}`, {
       method: 'POST',
       body: formData,
     }).then(response => response.json());
