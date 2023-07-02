@@ -68,3 +68,25 @@ button {
   transform: scale(1.01);
 }
 /* Primary button - END */
+
+/* View container - START */
+@media (max-width: 900px) {
+  .view-container {
+    padding-bottom: 80px;
+  }
+}
+/* View container - END */
+
+/* Secondary button - START */
+.secondary-button {
+  border: none;
+  color: var(--secondary-color);
+  border-radius: 100px;
+  padding: 1rem;
+  background-color: var(--white-color);
+}
+
+.secondary-button:hover {
+  transform: scale(1.01);
+}
+/* Secondary button - END */

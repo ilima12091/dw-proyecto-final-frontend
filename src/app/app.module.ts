@@ -11,6 +11,12 @@ import { SearchComponent } from './views/search/search.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfilePictureComponent } from './views/profile/profile-picture/profile-picture.component';
+import { PostCardComponent } from './components/post-card/post-card.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { PostComponent } from './views/post/post.component';
+import { NavBarItemComponent } from './components/nav-bar-item/nav-bar-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,8 +26,19 @@ import { ProfilePictureComponent } from './views/profile/profile-picture/profile
     SearchComponent,
     ProfileComponent,
     ProfilePictureComponent,
+    PostCardComponent,
+    NavBarComponent,
+    PostComponent,
+    NavBarItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,CommonModule,FormsModule,HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

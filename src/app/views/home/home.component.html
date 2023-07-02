@@ -1,1 +1,11 @@
-<p>home works!</p>
+<section class="view-container home">
+  <h1>Home</h1>
+  <div class="posts-feed">
+    <app-post-card
+      class="post-card"
+      *ngFor="let postCard of postCards"
+      [postCard]="postCard"
+      [routerLink]="['/home', postCard?.id]"
+    />
+  </div>
+</section>

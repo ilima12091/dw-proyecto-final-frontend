@@ -31,6 +31,20 @@ export class UserService {
       throw new Error('Failed to retrieve user');
     }
   }
+
+  async getUserByUserId(user_id: string): Promise<User> {
+    const result = await fetch(`${this.url}/user/${user_id}`, {
+      method: 'GET',
+      headers: this.commonHeaders,
+    });
+  
+    if (result.ok) {
+      const user = await result.json();
+      return user;
+    } else {
+      throw new Error('Failed to retrieve user');
+    }
+  }
   
   async createUser(user: User): Promise<boolean> {
     const result= await fetch(`${this.url}/user/register`,{

@@ -2,12 +2,24 @@
   <img class="login-logo" src="/assets/images/app-logo.svg" alt="App logo" />
   <div class="login-content">
     <h1 class="login-title">Log in</h1>
-    <form class="login-form">
-      <input class="input" type="text" placeholder="Email" />
-      <input class="input" type="password" placeholder="Password" />
-      <button class="primary-button">Log in</button>
-      <p>Don't have an account? </p>
-        <button class="primary-button" routerLink="/register">Create account</button>
+    <form class="login-form" [formGroup]="loginForm" (submit)="performLogin()">
+      <input
+        formControlName="email"
+        class="input"
+        type="text"
+        placeholder="Email"
+      />
+      <input
+        formControlName="password"
+        class="input"
+        type="password"
+        placeholder="Password"
+      />
+      <button class="primary-button login-button">Log in</button>
+      <p class="login-register-title">Don't have an account?</p>
+      <button class="secondary-button register-button" routerLink="/register">
+        Create account
+      </button>
     </form>
   </div>
 </section>

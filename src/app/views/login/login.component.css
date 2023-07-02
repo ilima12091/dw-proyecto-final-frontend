@@ -33,11 +33,14 @@
   width: 100%;
 }
 
-.login-form button {
+.login-button {
   margin-top: 1rem;
 }
 
-.login-form p{
+.login-form p {
   font-weight: 700;
 }
 
+.login-register-title {
+  text-align: center;
+}

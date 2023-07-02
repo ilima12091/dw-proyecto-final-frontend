@@ -15,11 +15,12 @@ export class ProfileComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const username = params['username'];
-      this.getUserProfile(username);
+      const user_id = params['user_id'];
+      this.getUserProfile(user_id);
     });
   }
 
+  /*
   uploadProfileImage(event: any): void {
     const files: FileList = event.target.files;
     if (files && files.length > 0) {
@@ -27,15 +28,15 @@ export class ProfileComponent implements OnInit{
       const formData: FormData = new FormData();
       formData.append('file', file);
   
-      const username = this.user.username || '';
+      const user_id = this.user.user_id || '';
   
-      this.userService.uploadProfileImage(formData, username).then(response => {
+      this.userService.uploadProfileImage(formData, user_id).then(response => {
         console.log('Profile image uploaded successfully', response);
         // Update the user object with the new profileImage value
         this.user.profileImage = response.profileImage;
   
         // Fetch the updated user object from the backend
-        this.userService.getUserByUserName(username).then((user: User) => {
+        this.userService.getUserByUserId(user_id).then((user: User) => {
           this.user = user;
         }).catch(error => {
           console.error('Error retrieving user profile', error);
@@ -44,18 +45,15 @@ export class ProfileComponent implements OnInit{
         console.error('Error uploading profile image', error);
       });
     }
-  }
-  
-  
-  
-  
-  
-  
-  
+  }*/ 
+
+  uploadProfileImage(event: Event): any{
+
+  };
   
 
-  getUserProfile(username: string): void {
-    this.userService.getUserByUserName(username)
+  getUserProfile(user_id: string): void {
+    this.userService.getUserByUserId(user_id)
       .then((user: User) => {
         this.user = user;
       })

@@ -1,29 +1,34 @@
-<div class="user-profile">
+<div class="user-profile-container">
+  <div class="user-profile">
     <h1>User Profile</h1>
+    <div class="profile-image-container">
+      <img [src]="user?.profileImage || 'placeholder.png'" alt="Profile Image" class="profile-image" />
+      
+      <div class="file-input">
+        <input type="file" id="file-upload" (change)="uploadProfileImage($event)" class="input-file" accept="image/*">
+        <label for="file-upload" class="upload-button">Upload</label>
+      </div>
+      
+    </div>
     <ul>
       <li>
-        <label for="name">Name: {{user?.name}}</label>
+        <input class="input" type="text" placeholder="{{user?.name}}" name="Name" />
       </li>
       <li>
-        <label for="surname">Surname: {{user?.surname}}</label>
+        <input class="input" type="text" placeholder="{{user?.surname}}" name="Surname" />
       </li>
       <li>
-        <label for="email">Email: {{user?.email}}</label>
+        <input class="input" type="text" placeholder="{{user?.email}}" name="email" />
       </li>
       <li>
-        <label for="username">Username: {{user?.username}}</label>
-        <span id="username"></span>
+        <input class="input" type="text" placeholder="{{user?.username}}" name="username" />
       </li>
       <li>
-        <label for="profileImage">Profile Image</label>
-
-        <img *ngIf="user?.profileImage" [src]="'/ProyectoFinal/dw-proyecto-final-backend/' + user?.profileImage" alt={{user?.profileImage}}>
-
-
-
-        
+        <button class="secondary-button profile-button">
+          Save changes
+        </button>
       </li>
-      <app-profile-picture></app-profile-picture>
     </ul>
+    
   </div>
-  
+</div>
