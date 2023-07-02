@@ -16,7 +16,7 @@ export class PostService {
   async getSpecificPost(id: number): Promise<PostCard> {
     return (await (await fetch(`${this.backendUrl}/home/${id}`)).json()) ?? [];
   }
-
+  
   async createPost(post: PostCard): Promise<PostCard> {
     const response = await fetch(`${this.backendUrl}/${post.userId}/posts`, {
       method: 'POST',

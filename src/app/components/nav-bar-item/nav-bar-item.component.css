@@ -11,6 +11,7 @@
 
 .nav-bar-item-active {
   background: #bed1d3;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {

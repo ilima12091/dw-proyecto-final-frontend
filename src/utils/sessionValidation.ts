@@ -8,3 +8,7 @@ export const isSessionExpired = () => {
 
   return expirationDate > currentDate;
 };
+
+export const clearSession = () => {
+  localStorage.removeItem('SESSION-EXPIRATION');
+};
