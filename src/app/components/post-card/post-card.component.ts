@@ -33,3 +33,5 @@ export class PostCardComponent {
     return `${days}d`;
   }
 }
+
+export { PostCard };
