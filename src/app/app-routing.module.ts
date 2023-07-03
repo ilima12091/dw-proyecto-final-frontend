@@ -6,6 +6,7 @@ import { HomeComponent } from './views/home/home.component';
 import { SearchComponent } from './views/search/search.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { PostComponent } from './views/post/post.component';
+import { PostCreationComponent } from './views/post-creation/post-creation.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfileComponent,
+  },
+  {
+    path: 'create-post',
+    component: PostCreationComponent,
   },
   {
     path: '',

@@ -20,7 +20,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { SearchRowComponent } from './components/search-row/search-row.component';
 import { CommentComponent } from './components/comment/comment.component';
-import { PostFormComponent } from './components/post-form/post-form.component';
+import { PostCreationComponent } from './views/post-creation/post-creation.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     NavBarItemComponent,
     SearchRowComponent,
     CommentComponent,
-    PostFormComponent,
+    PostCreationComponent,
   ],
   imports: [
     BrowserModule,
