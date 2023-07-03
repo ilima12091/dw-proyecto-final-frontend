@@ -12,16 +12,17 @@
     </div>
     <ul>
       <li>
-        <input class="input" type="text" placeholder="{{user?.name}}" name="Name" />
+        <input class="input" type="text" value="{{user?.name}}" name="Name" />
+        
       </li>
       <li>
-        <input class="input" type="text" placeholder="{{user?.surname}}" name="Surname" />
+        <input class="input" type="text" value="{{user?.surname}}" name="Surname" />
       </li>
       <li>
-        <input class="input" type="text" placeholder="{{user?.email}}" name="email" />
+        <input class="input" type="text" value="{{user?.email}}" name="email" />
       </li>
       <li>
-        <input class="input" type="text" placeholder="{{user?.username}}" name="username" />
+        <input class="input" type="text" value="{{user?.username}}" name="username" />
       </li>
       <li>
         <button class="secondary-button profile-button" (click)="saveChanges()">

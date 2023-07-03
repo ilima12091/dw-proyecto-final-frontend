@@ -38,12 +38,13 @@ export class UserService {
     const result = await secureService.request('GET', `${BASE_URL}/users/user/${user_id}`, {}, this.commonHeaders);
     console.log('Result from database:', result); // Debug statement
   
-    if (result.recordset.length > 0) {
-      return result.recordset[0]; // Assuming the user data is in the first element of the recordset array
+    if (result) {
+      return result; // Assuming the user data is directly returned as an object
     } else {
       throw new Error('Failed to retrieve user');
     }
   }
+  
   
   
   
