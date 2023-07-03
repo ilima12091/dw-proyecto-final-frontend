@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { clearSession } from 'src/utils/sessionValidation';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,9 @@ export class LoginComponent {
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router
-  ) {}
+  ) {
+    clearSession();
+  }
 
   performLogin() {
     const { email, password } = this.loginForm.value;

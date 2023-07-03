@@ -1,4 +1,4 @@
-<a [routerLink]="['/profile', user.user_id]" class="search-result-container">
+<div class="search-result-container">
   <img
     class="search-result-image"
     [src]="
@@ -9,4 +9,19 @@
   />
 
   <span class="search-result-content">{{ user.username }}</span>
-</a>
+  <button
+    *ngIf="!isFollowed()"
+    class="search-result-follow-button"
+    (click)="follow(user.user_id)"
+  >
+    Follow
+  </button>
+
+  <button
+    *ngIf="isFollowed()"
+    class="search-result-unfollow-button"
+    (click)="unFollow(user.user_id)"
+  >
+    Unfollow
+  </button>
+</div>

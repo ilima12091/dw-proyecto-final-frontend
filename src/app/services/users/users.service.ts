@@ -53,4 +53,30 @@ export class UserService {
       'Content-Type': 'application/json',
     });
   }
+
+  async followUser(id: number): Promise<any> {
+    return this.secureService.request(
+      'POST',
+      `${this.url}/users/follow`,
+      {
+        followedId: id,
+      },
+      {
+        'Content-Type': 'application/json',
+      }
+    );
+  }
+
+  async unFollowUser(id: number): Promise<any> {
+    return this.secureService.request(
+      'POST',
+      `${this.url}/users/unfollow`,
+      {
+        followedId: id,
+      },
+      {
+        'Content-Type': 'application/json',
+      }
+    );
+  }
 }
