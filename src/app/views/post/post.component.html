@@ -1,8 +1,6 @@
-<div class="postCard">
-  <div class="userContainer">
-    <img class="postCard-UserImage" [src]="post?.userImage" alt="notFound" />
-    <h2 class="postCard-UserName">{{ post?.userName }}</h2>
+<section class="view-container post">
+  <div class="post-container">
+    <app-post-card *ngIf="post" [postCard]="post" />
+    <mat-spinner *ngIf="loadingPost" diameter="50" />
   </div>
-  <p class="postCard-postText">{{ post?.postText }}</p>
-  <p class="time">{{ post?.time }}</p>
-</div>
+</section>

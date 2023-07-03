@@ -10,15 +10,23 @@ import { PostsService } from 'src/app/services/posts/posts.service';
 })
 export class PostComponent {
   post?: PostCard;
+  loadingPost = false;
 
   constructor(
     private route: ActivatedRoute,
     private postsService: PostsService
   ) {
     let id = this.route.snapshot.paramMap.get('id');
-
-    this.postsService.getSpecificPost(parseInt(id ?? '') || 0).then((data) => {
-      this.post = data;
-    });
+    this.loadingPost = true;
+    this.postsService
+      .getSpecificPost(parseInt(id ?? '') || 0)
+      .then((data) => {
+        console.log(data);
+        data.comments = JSON.parse(data?.comments ?? '[]');
+        this.post = data;
+      })
+      .finally(() => {
+        this.loadingPost = false;
+      });
   }
 }

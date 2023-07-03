@@ -15,11 +15,6 @@ export const navBarItems = [
     text: 'Create post',
   },
   {
-    route: '/chats',
-    icon: 'assets/icons/Chat.svg',
-    text: 'Chat',
-  },
-  {
     route: '/profile',
     icon: 'assets/icons/Profile.svg',
     text: 'Profile',

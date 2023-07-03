@@ -9,24 +9,25 @@ import { BASE_URL } from 'src/utils/globals';
 export class PostsService {
   constructor(private secureService: SecureService) {}
 
-  async getPostCards(userId: number): Promise<PostCard[]> {
-    return this.secureService.request(
-      'GET',
-      `${BASE_URL}/users/${userId}/posts`
-    );
+  async getPostCards(): Promise<PostCard[]> {
+    return this.secureService.request('GET', `${BASE_URL}/users/posts/feed`);
   }
 
-  async getSpecificPost(postId: number): Promise<PostCard> {
-    return this.secureService.request('GET', `${BASE_URL}/posts/${postId}`);
+  async getSpecificPost(post_id: number): Promise<any> {
+    return this.secureService.request('GET', `${BASE_URL}/posts/${post_id}`);
   }
-  
+
   async createPost(post: PostCard): Promise<PostCard> {
-    const response = await this.secureService.request('POST', `${BASE_URL}/users/${post.userId}/posts`, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(post)
-    });
+    const response = await this.secureService.request(
+      'POST',
+      `${BASE_URL}/users/${post.user_id}/posts`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(post),
+      }
+    );
 
     if (response.ok) {
       return response.json();
@@ -36,12 +37,16 @@ export class PostsService {
   }
 
   async modifyPost(post: PostCard): Promise<PostCard> {
-    const response = await this.secureService.request('PUT', `${BASE_URL}/users/${post.userId}/posts/${post.postId}`, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(post)
-    });
+    const response = await this.secureService.request(
+      'PUT',
+      `${BASE_URL}/users/${post.user_id}/posts/${post.post_id}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(post),
+      }
+    );
 
     if (response.ok) {
       return response.json();
@@ -51,7 +56,10 @@ export class PostsService {
   }
 
   async deletePost(post: PostCard): Promise<void> {
-    const response = await this.secureService.request('DELETE', `${BASE_URL}/users/${post.userId}/posts/${post.postId}`);
+    const response = await this.secureService.request(
+      'DELETE',
+      `${BASE_URL}/users/${post.user_id}/posts/${post.post_id}`
+    );
 
     if (!response.ok) {
       throw new Error('Error deleting post');

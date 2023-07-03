@@ -72,7 +72,7 @@ button {
 /* View container - START */
 @media (max-width: 900px) {
   .view-container {
-    padding-bottom: 80px;
+    padding-bottom: 88px !important;
   }
 }
 /* View container - END */
@@ -91,5 +91,11 @@ button {
 }
 /* Secondary button - END */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
