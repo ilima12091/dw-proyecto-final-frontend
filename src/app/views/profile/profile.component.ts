@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { ActivatedRoute } from '@angular/router';
+import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { UserService } from 'src/app/services/users/users.service';
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,8 @@ export class ProfileComponent implements OnInit{
   password?: string;
   username?: string;
   
-  user_id: number | undefined;
+  user_id?: number;
+  editMode: boolean = false;
 
 
   @Input() user!: User;
@@ -34,12 +36,31 @@ export class ProfileComponent implements OnInit{
     }, error => {
       console.error('Error retrieving route parameters', error);
     });
-  }
+  } 
+
+  getUserProfile(user_id: number): void {
+    console.log('getUserProfile called with user_id:', user_id); // Debug statement
   
+    this.userService.getUserByUserId(user_id)
+      .then((user: User) => {
+        console.log('Received user:', user); // Debug statement
+  
+        this.user = user;
+      })
+      .catch(error => {
+        console.error('Error retrieving user profile', error);
+      });
+
+      
+  }
+  toggleEditMode() {
+    this.editMode = !this.editMode;
+  }
+
   
   
 
-  
+
   uploadProfileImage(event: any): void {
     const file = event.target.files[0]; // Selected file
   
@@ -74,46 +95,15 @@ export class ProfileComponent implements OnInit{
   
     reader.readAsDataURL(file);
   }
-  
-  
-  
-  
-
-  getUserProfile(user_id: number): void {
-    console.log('getUserProfile called with user_id:', user_id); // Debug statement
-  
-    this.userService.getUserByUserId(user_id)
-      .then((user: User) => {
-        console.log('Received user:', user); // Debug statement
-  
-        this.user = user;
-      })
-      .catch(error => {
-        console.error('Error retrieving user profile', error);
-      });
-
-      
-  }
-
-  
-
-  
-  
-  
-
   saveChanges(){
-
-    // to finish
 
     const nameInput = document.querySelector('input[name="Name"]') as HTMLInputElement;
     const surnameInput = document.querySelector('input[name="Surname"]') as HTMLInputElement;
-    const emailInput = document.querySelector('input[name="email"]') as HTMLInputElement;
     const usernameInput = document.querySelector('input[name="username"]') as HTMLInputElement;
 
     const user: User = {
       name: this.name,
       surname: this.surname,
-      email: this.email,
       password: this.password,
       username: this.username,
     };
@@ -129,15 +119,24 @@ export class ProfileComponent implements OnInit{
       
     }
   
-    if (emailInput.value) {
-      user.email = emailInput.value;
-      
-    }
-  
     if (usernameInput.value) {
       user.username = usernameInput.value;
     }
+    this.saveChangesToDatabase(user);
+}
+
+saveChangesToDatabase(user: User) {
+  if (this.user_id !== undefined) {
+    this.userService.modifyUser(this.user_id)
+      .then((updatedUser: User) => {
+        console.log('User updated successfully:', updatedUser);
+      })
+      .catch((error) => {
+        console.error('Error updating user:', error);
+        
+      });
   }
+}
 
 
 }

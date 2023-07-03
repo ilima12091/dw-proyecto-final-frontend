@@ -10,9 +10,10 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './profile-picture.component.html',
   styleUrls: ['./profile-picture.component.css']
 })
-export class ProfilePictureComponent implements OnInit {
+export class ProfilePictureComponent {
   title = 'fileUpload';
   images?: any;
+  user_id?:number;
   @Input() user!: User;
   @Input() setUserToEdit!: (user: User) => void;
 
@@ -24,44 +25,40 @@ export class ProfilePictureComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const username = params['username'];
-      this.getUserProfile(username);
-    });
-  }
-
-  getUserProfile(username: string): void {
-    this.userService.getUserByUserName(username)
-      .then((user: User) => {
-        this.user = user;
-      })
-      .catch(error => {
-        console.error('Error retrieving user profile', error);
-      });
-  }
-
-  selectImage(event: any) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.images = file;
-    }
-  }
-
-  async onSubmit() {
-    const formData = new FormData();
-    formData.append('file', this.images);
   
-    try {
-      const res = await this.http.post<any>(`http://localhost:8000/user/upload/${this.user.username}`, formData).toPromise();
-      console.log(res); // The response will contain the updated user object
+  uploadProfileImage(event: any): void {
+    const file = event.target.files[0]; // Selected file
   
-      if (res && res.user) {
-        this.user = res.user; // Assign the updated user object to this.user
+    const reader = new FileReader();
+  
+    reader.onload = (e) => {
+      if (e.target && e.target.result) {
+        let fileData: string | undefined;
+  
+        if (typeof e.target.result === 'string') {
+          // Handle the case when e.target.result is a string
+          fileData = e.target.result.split(',')[1]; // Extract the Base64 data from the Data URL
+        } else if (e.target.result instanceof ArrayBuffer) {
+        const binary = Array.from(new Uint8Array(e.target.result));
+        const base64 = btoa(binary.map(byte => String.fromCharCode(byte)).join(''));
+        fileData = base64;
+        }
+  
+        if (fileData) {
+          
+          // Send the fileData to the server
+          this.userService.uploadProfileImage(fileData, this.user_id)
+            .then(response => {
+              console.log('Image uploaded:', response);
+            })
+            .catch(error => {
+              console.error('Error uploading file:', error);
+            });
+        }
       }
-    } catch (err) {
-      console.log(err);
-    }
+    };
+  
+    reader.readAsDataURL(file);
   }
   
 }

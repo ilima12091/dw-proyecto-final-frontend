@@ -35,7 +35,7 @@ export class UserService {
   async getUserByUserId(user_id: number): Promise<User> {
     console.log('getUserByUserId called with user_id:', user_id); // Debug statement
   
-    const result = await secureService.request('GET', `${BASE_URL}/users/user/${user_id}`, {}, this.commonHeaders);
+    const result = await secureService.request('GET', `${BASE_URL}/users/${user_id}`);
     console.log('Result from database:', result); // Debug statement
   
     if (result) {
@@ -59,8 +59,8 @@ export class UserService {
     return result.ok;
   }
 
-  async modifyUser(user: User): Promise<boolean> {
-    const result = await secureService.request('PUT', `${this.url}/user/${user.username}`, user, this.commonHeaders);
+  async modifyUser(user_id: number): Promise<User> {
+    const result = await secureService.request('PUT', `${BASE_URL}/users/update/${user_id}`, this.commonHeaders);
     return result.ok;
   }
   

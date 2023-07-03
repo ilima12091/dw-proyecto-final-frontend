@@ -1,9 +1,12 @@
-<form>      
-    <div>
-      <input type="file" name="image" (change)="selectImage($event)" />
-    </div>
-    <br>
-    <div>
-      <button type="submit" (click)="onSubmit()">Upload</button>
-    </div>
-  </form>
+
+<img [src]="user?.profileImage" alt="Profile Image" class="profile-image" />
+<div class="file-input">
+  <input
+    type="file"
+    id="file-upload"
+    (change)="uploadProfileImage($event)"
+    class="input-file"
+    accept="image/*"
+  />
+  <label for="file-upload" class="upload-button">Upload</label>
+</div>
