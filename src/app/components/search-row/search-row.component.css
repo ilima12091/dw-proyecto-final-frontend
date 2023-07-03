@@ -18,3 +18,17 @@
 .search-result-content {
   width: 100%;
 }
+
+.search-result-follow-button {
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.search-result-unfollow-button {
+  background: none;
+  border: none;
+  color: red;
+  font-weight: bold;
+}

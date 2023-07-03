@@ -33,6 +33,7 @@ export class SearchComponent {
         .searchUsers(this.searchTerm)
         .then((users) => {
           this.searchResults = users;
+          console.log(this.searchResults);
           this.errorLoading = false;
         })
         .catch((_) => {

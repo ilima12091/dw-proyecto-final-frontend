@@ -21,8 +21,3 @@
 .search-result {
   width: 100%;
 }
-
-.search-result:hover {
-  background-color: #b8c8ca;
-  cursor: pointer;
-}
