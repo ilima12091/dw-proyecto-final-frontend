@@ -43,4 +43,14 @@ export class UserService {
       `${this.url}/users/search?username=${searchTerm}`
     );
   }
+
+  async getUserData(id: number): Promise<any> {
+    return this.secureService.request('GET', `${this.url}/users/${id}`);
+  }
+
+  async updateUser(id: number, data: any): Promise<any> {
+    return this.secureService.request('PUT', `${this.url}/users/${id}`, data, {
+      'Content-Type': 'application/json',
+    });
+  }
 }

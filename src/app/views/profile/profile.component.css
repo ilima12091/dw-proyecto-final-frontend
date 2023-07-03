@@ -1,0 +1,46 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.profile-image {
+  height: 150px;
+  width: 150px;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.profile-form-success {
+  background-color: green;
+  color: white;
+  text-align: center;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  margin: 0px;
+}
+
+.profile-form-error {
+  background-color: red;
+  color: white;
+  text-align: center;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  margin: 0px;
+}

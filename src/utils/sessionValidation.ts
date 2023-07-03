@@ -11,4 +11,9 @@ export const isSessionExpired = () => {
 
 export const clearSession = () => {
   localStorage.removeItem('SESSION-EXPIRATION');
+  localStorage.removeItem('USERID');
+};
+
+export const getUserId = () => {
+  return localStorage.getItem('USERID');
 };

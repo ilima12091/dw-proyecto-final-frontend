@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SearchRowComponent } from './components/search-row/search-row.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { PostCreationComponent } from './views/post-creation/post-creation.component';
+import { ViewProfileComponent } from './views/view-profile/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PostCreationComponent } from './views/post-creation/post-creation.compo
     SearchRowComponent,
     CommentComponent,
     PostCreationComponent,
+    ViewProfileComponent,
   ],
   imports: [
     BrowserModule,
