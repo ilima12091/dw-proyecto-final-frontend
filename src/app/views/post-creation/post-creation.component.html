@@ -1,0 +1,24 @@
+<section class="view-container post-creation">
+  <h1>Post Creation</h1>
+  <div class="post-creation-content">
+    <form
+      class="post-creation-content-form"
+      [formGroup]="postCreationForm"
+      (submit)="createPost()"
+    >
+      <input
+        formControlName="content"
+        class="input"
+        type="text"
+        placeholder="Post content"
+      />
+      <p *ngIf="errorCreating" class="post-creation-error">
+        Error creating post
+      </p>
+      <p *ngIf="createdSuccessfully" class="post-creation-success">
+        Created successfully!
+      </p>
+      <button class="primary-button">Create post</button>
+    </form>
+  </div>
+</section>

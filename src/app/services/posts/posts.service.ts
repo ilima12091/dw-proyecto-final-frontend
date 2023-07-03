@@ -17,23 +17,18 @@ export class PostsService {
     return this.secureService.request('GET', `${BASE_URL}/posts/${post_id}`);
   }
 
-  async createPost(post: PostCard): Promise<PostCard> {
-    const response = await this.secureService.request(
+  async createPost(content: string): Promise<any> {
+    console.log(content);
+    return this.secureService.request(
       'POST',
-      `${BASE_URL}/users/${post.user_id}/posts`,
+      `${BASE_URL}/users/posts`,
       {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(post),
+        content,
+      },
+      {
+        'Content-Type': 'application/json',
       }
     );
-
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error('Error creating post');
-    }
   }
 
   async modifyPost(post: PostCard): Promise<PostCard> {
