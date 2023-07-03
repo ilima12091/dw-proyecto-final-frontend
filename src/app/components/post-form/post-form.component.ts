@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostsService } from '../../services/posts/posts.service';
 import { PostCard } from '../post-card/post-card.component';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../../services/authentication/authentication.service'; // Importa el servicio de autenticación
-import { User } from 'src/app/interfaces/user';
+import { Timestamp } from 'firebase/firestore';
+
 
 
 
@@ -38,10 +36,10 @@ export class PostFormComponent implements OnInit {
 
     const post: PostCard = {
       postId: this.currentPostId,
-      userId: this.currentUser.userId, // Utiliza el ID de usuario del usuario actualmente autenticado
-      userImage: this.currentUser.userImage, // Utiliza la imagen del usuario actualmente autenticado si está disponible
+      userId: this.currentUser.userId,
+      userImage: this.currentUser.userImage, 
       content: this.postForm.value.content,
-      timeStap: Date.now()
+      timeStap: Timestamp.fromMillis(Date.now()),
     };
     
     try {
@@ -56,24 +54,28 @@ export class PostFormComponent implements OnInit {
     }
   }
 
-  async editPost(postId: number) {
+  async editPost(post: PostCard): Promise<void> {
     try {
-      const post = await this.postsService.getSpecificPost(postId);
-      this.editingMode = true;
-      this.currentPostId = postId;
-      this.postForm.patchValue({
-        content: post.content
-      });
+      await this.postsService.modifyPost(post);
+      console.log("La publicación ha sido modificada exitosamente.");
     } catch (error) {
-      console.error(error);
+      console.error("Error al modificar la publicación:", error);
     }
   }
-
-  async deletePost(post: PostCard) {
+  
+  async deletePost(): Promise<void> {
     try {
+      const post: PostCard = {
+        postId: this.currentPostId,
+        userId: this.currentUser.userId,
+        userImage: this.currentUser.userImage, 
+        content: this.postForm.value.content,
+        timeStap: Timestamp.fromMillis(Date.now()),
+      };
       await this.postsService.deletePost(post);
+      console.log("La publicación ha sido eliminada exitosamente.");
     } catch (error) {
-      console.error(error);
+      console.error("Error al eliminar la publicación:", error);
     }
   }
 }
