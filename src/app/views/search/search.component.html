@@ -1,3 +1,21 @@
-<section class="view-container">
-  <p>search works!</p>
+<section class="view-container search">
+  <h1>Search</h1>
+  <input
+    class="input search-input"
+    type="text"
+    placeholder="Search"
+    [(ngModel)]="searchTerm"
+    (keyup)="onSearchKeyup()"
+    [disabled]="loading"
+  />
+  <mat-spinner *ngIf="loading; else results" diameter="50" />
+  <p *ngIf="errorLoading">There was an error loading data</p>
+  <p *ngIf="searchResults.length === 0 && !loading">Search other users</p>
+  <ng-template #results>
+    <ul *ngIf="!loading" class="search-results">
+      <li *ngFor="let user of searchResults" class="search-result">
+        <app-search-row [user]="user" />
+      </li>
+    </ul>
+  </ng-template>
 </section>

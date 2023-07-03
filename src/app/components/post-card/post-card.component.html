@@ -1,12 +1,21 @@
-<div class="postCard">
-  <div class="userContainer">
+<div class="post-card">
+  <div class="user-container">
     <img
-      class="postCard-UserImage"
-      [src]="postCard?.userImage"
-      alt="notFound"
+      class="post-card-user-image"
+      [src]="
+        postCard?.profile_picture ??
+        'https://img.freepik.com/free-icon/user_318-563642.jpg'
+      "
+      alt="User Image"
     />
-    <h2 class="postCard-UserName">{{ postCard?.userName }}</h2>
+    <h2>{{ postCard?.username }}</h2>
   </div>
-  <p class="postCard-postText">{{ postCard?.postText }}</p>
-  <p class="time">{{ postCard?.time }}</p>
+  <p class="post-card-text">{{ postCard?.content }}</p>
+  <p class="post-card-time">{{ getTimeAgo() }} ago</p>
+  <h2 *ngIf="postCard?.comments" class="post-card-comments-title">Comments</h2>
+  <ul *ngIf="postCard?.comments" class="post-card-comments">
+    <li *ngFor="let comment of postCard?.comments">
+      <app-comment [comment]="comment" />
+    </li>
+  </ul>
 </div>

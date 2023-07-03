@@ -22,7 +22,7 @@ export class SecureService {
     if (Object.keys(body).length > 0) {
       config.body = JSON.stringify(body);
     }
-
+    console.log('config: ', config);
     const response = await fetch(url, config);
 
     const parsedResponse = await response.json();
