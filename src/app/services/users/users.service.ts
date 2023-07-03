@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { SecureService } from '../secure/secure.service';
+import { BASE_URL } from 'src/utils/globals';
 
 
 const secureService = new SecureService();
@@ -21,7 +22,7 @@ export class UserService {
 
   
   async getUserByUserName(username: string): Promise<User> {
-    const result = await secureService.request('GET', `${this.url}/user/${username}`, {}, this.commonHeaders);
+    const result = await secureService.request('GET', `${this.url}/users/${username}`, {}, this.commonHeaders);
   
     if (result.ok) {
       return result;
@@ -32,14 +33,20 @@ export class UserService {
   
 
   async getUserByUserId(user_id: number): Promise<User> {
-    const result = await secureService.request('GET', `${this.url}/users/${user_id}`, {}, this.commonHeaders);
+    console.log('getUserByUserId called with user_id:', user_id); // Debug statement
   
-    if (result.ok) {
-      return result;
+    const result = await secureService.request('GET', `${BASE_URL}/users/user/${user_id}`, {}, this.commonHeaders);
+    console.log('Result from database:', result); // Debug statement
+  
+    if (result.recordset.length > 0) {
+      return result.recordset[0]; // Assuming the user data is in the first element of the recordset array
     } else {
       throw new Error('Failed to retrieve user');
     }
   }
+  
+  
+  
   
   //doesnt use secure service 
   async createUser(user: User): Promise<boolean> {

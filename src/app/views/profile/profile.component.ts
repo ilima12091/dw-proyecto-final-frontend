@@ -27,12 +27,15 @@ export class ProfileComponent implements OnInit{
       const user_id = params['user_id'];
       if (user_id !== undefined) {
         this.user_id = +user_id; 
-        this.getUserProfile(this.user_id);
+        //this.getUserProfile(this.user_id);
       } else {
         console.error('User ID is undefined');
       }
+    }, error => {
+      console.error('Error retrieving route parameters', error);
     });
   }
+  
   
   
 
@@ -77,15 +80,38 @@ export class ProfileComponent implements OnInit{
   
 
   getUserProfile(user_id: number): void {
+    console.log('getUserProfile called with user_id:', user_id); // Debug statement
+  
     this.userService.getUserByUserId(user_id)
       .then((user: User) => {
+        console.log('Received user:', user); // Debug statement
+  
         this.user = user;
       })
       .catch(error => {
         console.error('Error retrieving user profile', error);
       });
 
+      
   }
+
+  getUserProfileByUsername(username:string): void{
+    console.log('getUserProfile called with username:', username); // Debug statement
+  
+    this.userService.getUserByUserName(username)
+      .then((user: User) => {
+        console.log('Received user:', user); // Debug statement
+  
+        this.user = user;
+      })
+      .catch(error => {
+        console.error('Error retrieving user profile by username', error);
+      });
+    }
+
+  
+  
+  
 
   saveChanges(){
 
