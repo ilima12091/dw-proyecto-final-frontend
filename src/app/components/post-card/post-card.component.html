@@ -12,8 +12,8 @@
   </div>
   <p class="post-card-text">{{ postCard?.content }}</p>
   <p class="post-card-time">{{ getTimeAgo() }} ago</p>
-  <h2 *ngIf="postCard?.comments" class="post-card-comments-title">Comments</h2>
-  <ul *ngIf="postCard?.comments" class="post-card-comments">
+  <h2 *ngIf="hasComments()" class="post-card-comments-title">Comments</h2>
+  <ul *ngIf="hasComments()" class="post-card-comments">
     <li *ngFor="let comment of postCard?.comments">
       <app-comment [comment]="comment" />
     </li>

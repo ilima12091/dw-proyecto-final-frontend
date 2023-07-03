@@ -21,7 +21,6 @@ export class PostComponent {
     this.postsService
       .getSpecificPost(parseInt(id ?? '') || 0)
       .then((data) => {
-        console.log(data);
         data.comments = JSON.parse(data?.comments ?? '[]');
         this.post = data;
       })

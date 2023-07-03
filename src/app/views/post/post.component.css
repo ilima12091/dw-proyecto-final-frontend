@@ -12,3 +12,7 @@
   max-width: 400px;
   width: 100%;
 }
+
+app-post-card {
+  width: 100%;
+}

@@ -32,6 +32,10 @@ export class PostCardComponent {
     const days = Math.floor(hours / 24);
     return `${days}d`;
   }
+
+  hasComments() {
+    return this.postCard?.comments?.length ?? 0 > 0;
+  }
 }
 
 export { PostCard };
