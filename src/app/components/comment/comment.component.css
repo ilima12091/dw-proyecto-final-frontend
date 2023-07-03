@@ -1,0 +1,13 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgb(201, 200, 200);
+}
+
+.comment-username {
+  margin: 0px;
+}
+
+.comment-content {
+  margin: 0px;
+}

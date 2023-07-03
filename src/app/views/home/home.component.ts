@@ -14,7 +14,7 @@ export class HomeComponent {
 
   constructor(private postService: PostsService) {
     this.postService
-      .getPostCards(10)
+      .getPostCards()
       .then((data) => {
         this.postCards = data;
       })
