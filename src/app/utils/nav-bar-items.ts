@@ -15,7 +15,7 @@ export const navBarItems = [
     text: 'Create post',
   },
   {
-    route: '/profile',
+    route: `/profile`,
     icon: 'assets/icons/Profile.svg',
     text: 'Profile',
   },

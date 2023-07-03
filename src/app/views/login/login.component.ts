@@ -31,6 +31,7 @@ export class LoginComponent {
         this.showLoginError = false;
         if (result) {
           localStorage.setItem('SESSION-EXPIRATION', result?.sessionExpiration);
+          localStorage.setItem('USERID', result?.userId);
           this.router.navigate(['/home']);
         }
       })
